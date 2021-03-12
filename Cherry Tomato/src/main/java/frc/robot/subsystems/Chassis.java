@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.Talon;
@@ -12,7 +11,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Chassis extends SubsystemBase {
 
-  Talon = null;
+  Talon rMotor = null; 
   Talon lMotor = null;
 
   DifferentialDrive diffDrive = null;
@@ -23,11 +22,11 @@ public class Chassis extends SubsystemBase {
     rMotor = new Talon(Constants.CHASSIS_RIGHT_MOTOR);
     lMotor = new Talon(Constants.CHASSIS_LEFT_MOTOR);
 
-    diffDrive = new DifferentialDrive(lMotor, rMotor);
+    diffDrive = new DifferentialDrive(lMotor, rMotor); 
   }
 
-  public void driveChassis(double fwdSpeed, double rotSpeed) {
-     
+  public void driveChassis(double fwdSpeed, double rotAmt) {
+     diffDrive.arcadeDrive(fwdSpeed, rotAmt);
   }
 
   
