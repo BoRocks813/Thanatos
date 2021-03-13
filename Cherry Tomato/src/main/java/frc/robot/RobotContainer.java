@@ -26,9 +26,10 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-    // Configure the button bindings
+    // Configure the button bindings (See function below)
     configureButtonBindings();
 
+    // Sets the default command for the chassis
     m_Chassis.setDefaultCommand(new chassisDrive());
   }
 
@@ -38,7 +39,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    // Add the button bindings here
+
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
@@ -46,7 +50,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    // Not really sure what this does yet. Not quite sure if we're even doing auton still.
+    return null;
   }
 }

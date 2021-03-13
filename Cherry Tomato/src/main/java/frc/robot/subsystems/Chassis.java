@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Chassis extends SubsystemBase {
-
+  // Initializes the motor variables
   Talon rMotor = null; 
   Talon lMotor = null;
 
@@ -19,13 +19,16 @@ public class Chassis extends SubsystemBase {
   /** Creates a new Chassis. */
   public Chassis() {
 
+    // Names the motors
     rMotor = new Talon(Constants.CHASSIS_RIGHT_MOTOR);
     lMotor = new Talon(Constants.CHASSIS_LEFT_MOTOR);
 
+    // Incorporates the motors above to a differential drive, allowing for simplified commands
     diffDrive = new DifferentialDrive(lMotor, rMotor); 
   }
 
   public void driveChassis(double fwdSpeed, double rotAmt) {
+    // Uses the "arcadeDrive" function to move the robot
      diffDrive.arcadeDrive(fwdSpeed, rotAmt);
   }
 
