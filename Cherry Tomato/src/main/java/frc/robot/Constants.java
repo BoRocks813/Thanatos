@@ -17,12 +17,14 @@ public final class Constants {
     improper use could damage the robot. Make sure to double check they are the right values
     before running the code */
     public static final int CHASSIS_RIGHT_MOTOR = 0;
-    public static final int CHASSIS_LEFT_MOTOR = 0;
+    public static final int CHASSIS_LEFT_MOTOR = 1;
 
     // Sets the port on the computer to which the controller is plugged into
     public static final int DRIVER_CONTROLLER = 0;
 
     // Sets sensitivity settings on the controller (I think)
 	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 2;
-	public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
+    public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
+    
+    public static boolean autonOn = false; 
 }
