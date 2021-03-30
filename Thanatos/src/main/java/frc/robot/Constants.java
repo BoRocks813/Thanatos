@@ -23,8 +23,10 @@ public final class Constants {
     public static final int DRIVER_CONTROLLER = 0;
 
     // Sets sensitivity settings on the controller (I think)
-	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 2;
+	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
     
     public static boolean autonOn = false; 
+
+    public static int SOLENOID = 0;
 }

@@ -31,17 +31,6 @@ public class chassisDrive extends CommandBase {
     RobotContainer.m_Chassis.driveChassis(moveSpeed, rotateSpeed);
   }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    // Sets the engine to 0 to brake and avoid drifting
-    RobotContainer.m_Chassis.driveChassis(0, 0);
-  }
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    // We don't use this as this command is used to drive the robot and ends when tele-op is turned off
-    return false;
-  }
 }
+
+

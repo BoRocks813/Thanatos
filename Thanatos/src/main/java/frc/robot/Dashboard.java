@@ -5,8 +5,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotContainer;
-import frc.robot.Constants;
 
 /** Add your docs here. */
 public class Dashboard {
