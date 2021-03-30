@@ -27,8 +27,6 @@ public class RobotContainer {
 
   public final static SolenoidMain m_Solenoid = new SolenoidMain();
 
-  public Command beginSolenoid = new activateSolenoid();
-  public Command stopSolenoid = new disengageSolenoid();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -50,8 +48,8 @@ public class RobotContainer {
     JoystickButton buttonA = (JoystickButton) new JoystickButton(driverController, XboxController.Button.kA.value);
     JoystickButton buttonB = (JoystickButton) new JoystickButton(driverController, XboxController.Button.kB.value);
 
-    buttonA.whenPressed(beginSolenoid);
-    buttonB.whenPressed(stopSolenoid);
+    buttonA.whenPressed(new activateSolenoid());
+    buttonB.whenPressed(new disengageSolenoid());
   }
 
   /**
