@@ -16,7 +16,9 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
  * It is advised to statically import this class (or one of its inner classes)
  * wherever the constants are needed, to reduce verbosity.
  */
-public final class Constants {
+
+ public final class Constants {
+    
     /* ***IMPORTANT*** Be sure you know what you're doing when changing these variables as 
     improper use could damage the robot. Make sure to double check they are the right values
     before running the code */
