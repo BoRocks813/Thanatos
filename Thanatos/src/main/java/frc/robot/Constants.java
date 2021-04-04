@@ -4,14 +4,17 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 /**
- * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
- * constants. This class should not be used for any other purpose. All constants should be declared
- * globally (i.e. public static). Do not put anything functional in this class.
+ * The Constants class provides a convenient place for teams to hold robot-wide
+ * numerical or boolean constants. This class should not be used for any other
+ * purpose. All constants should be declared globally (i.e. public static). Do
+ * not put anything functional in this class.
  *
- * <p>It is advised to statically import this class (or one of its inner classes) wherever the
- * constants are needed, to reduce verbosity.
+ * <p>
+ * It is advised to statically import this class (or one of its inner classes)
+ * wherever the constants are needed, to reduce verbosity.
  */
 public final class Constants {
     /* ***IMPORTANT*** Be sure you know what you're doing when changing these variables as 
@@ -23,9 +26,10 @@ public final class Constants {
     // Sets the port on the computer to which the controller is plugged into
     public static final int DRIVER_CONTROLLER = 0;
 
-    // Sets sensitivity settings on the controller (I think)
-	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
-    public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
+    // Sets the axes for the drive system joystick
+	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = (int) RobotContainer.driverController.getY(Hand.kLeft);
+    public static final int DRIVER_CONTROLLER_MOVE_AXIS = (int) RobotContainer.driverController.getX(Hand.kLeft);
+
     
     public static boolean autonOn = false; 
 
