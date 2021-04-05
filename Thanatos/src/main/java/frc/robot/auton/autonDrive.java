@@ -9,7 +9,10 @@ public class autonDrive extends CommandBase {
     double driveSpeed;
     double rotateSpeed;
     double time;
+
     Timer m_Timer;
+
+    boolean isFinished = false;
     
     public autonDrive(double speed, double rotate, double amtTime) {
         addRequirements(RobotContainer.m_Chassis);
@@ -27,10 +30,18 @@ public class autonDrive extends CommandBase {
     @Override
     public void execute() {
         m_Timer.start();
+        
 
-        while(m_Timer.get() != time) {
+        while(m_Timer.get() <= time) {
             RobotContainer.m_Chassis.driveChassis(driveSpeed, rotateSpeed);
         }
+
+        isFinished = true;
+    }
+
+    @Override
+    public Boolean isFinished() {
+        return isFinished;
     }
 
 }
