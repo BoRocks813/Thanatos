@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
 import frc.robot.commands.*;
 import frc.robot.subsystems.SolenoidMain;
@@ -28,6 +29,8 @@ public class RobotContainer {
   public static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
   public final static SolenoidMain m_Solenoid = new SolenoidMain();
+
+  public final static Arm m_Arm = new Arm();
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */

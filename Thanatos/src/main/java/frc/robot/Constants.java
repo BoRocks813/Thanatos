@@ -28,6 +28,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     // Sets the port on the computer to which the controller is plugged into
     public static final int DRIVER_CONTROLLER = 0;
 
+    public static final int ARM_MOTOR = 2;
+
     // Sets the axes for the drive system joystick
 	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = (int) RobotContainer.driverController.getY(Hand.kLeft);
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = (int) RobotContainer.driverController.getX(Hand.kLeft);
