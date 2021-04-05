@@ -11,6 +11,8 @@ import frc.robot.commands.*;
 import frc.robot.subsystems.SolenoidMain;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import java.util.ArrayList;
+import frc.robot.auton.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -57,8 +59,17 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // Not really sure what this does yet. Not quite sure if we're even doing auton still.
-    return null;
+  public ArrayList<Command> getAutonomousCommands() {
+    ArrayList<Command> autonCommands = new ArrayList<Command>();
+
+    // Add auton commands here and make sure to add them to autonCommands
+    // Below is an example
+
+    Command com1 = new autonDrive(2.5, 0.0, 3.0);
+    Command com2 = new autonDrive(0.5, 2.0, 1.0);
+
+
+
+    return autonCommands;
   }
 }
