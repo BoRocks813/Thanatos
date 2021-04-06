@@ -14,9 +14,9 @@ public class activateSolenoid extends CommandBase {
     addRequirements(RobotContainer.m_Solenoid);
   }
   boolean isCalled = false;
-  // Called when the command is initially scheduled.
+
   @Override
-  public void initialize() {
+  public void execute() {
     RobotContainer.m_Solenoid.startSolenoid();
     isCalled = true;
   }

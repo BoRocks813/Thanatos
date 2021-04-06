@@ -17,7 +17,7 @@ public class disengageSolenoid extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
+  public void execute() {
     RobotContainer.m_Solenoid.stopSolenoid();
     isCalled = true;
     
