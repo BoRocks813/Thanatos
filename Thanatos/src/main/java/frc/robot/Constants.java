@@ -31,11 +31,15 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     public static final int ARM_MOTOR = 2;
 
     // Sets the axes for the drive system joystick
-	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = (int) RobotContainer.driverController.getY(Hand.kLeft);
+	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = (int) RobotContainer.driverController.getY(Hand.kRight);
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = (int) RobotContainer.driverController.getX(Hand.kLeft);
 
     
     public static boolean autonOn = false; 
 
     public static int SOLENOID = 0;
+
+    public final static double linearDriveSense = 1.0;
+    public final static double lateralDriveSense = 1.0;
+    public final static double moveArmSense = 1.0;
 }

@@ -25,8 +25,8 @@ public class moveArm extends CommandBase {
   @Override
   public void execute() {
     // Sets the triggers for the command
-    double fwdSpeed = RobotContainer.driverController.getTriggerAxis(Hand.kRight);
-    double bckSpeed = -RobotContainer.driverController.getTriggerAxis(Hand.kLeft);
+    double fwdSpeed = Constants.moveArmSense * RobotContainer.driverController.getTriggerAxis(Hand.kRight);
+    double bckSpeed = -(Constants.moveArmSense * RobotContainer.driverController.getTriggerAxis(Hand.kLeft));
 
     // This code may not work:
 
