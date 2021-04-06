@@ -40,7 +40,7 @@ public class autonDrive extends CommandBase {
     }
 
     @Override
-    public Boolean isFinished() {
+    public boolean isFinished() {
         return isFinished;
     }
 

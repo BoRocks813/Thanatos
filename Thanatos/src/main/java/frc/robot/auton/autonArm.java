@@ -8,12 +8,14 @@ public class autonArm extends CommandBase {
     double speed;
     double time;
     
+    Timer m_Timer;
+
     Boolean isFinished = false;
     
     public autonArm(double speed, double time) {
         addRequirements(RobotContainer.m_Arm);
 
-        Timer m_Timer = new Timer();
+        m_Timer = new Timer();
 
         this.speed = speed;
         this.time = time;
@@ -27,7 +29,7 @@ public class autonArm extends CommandBase {
     public void execute() {
         m_Timer.start();
 
-        while(m_Timer.get <= time) {
+        while(m_Timer.get() <= time) {
             RobotContainer.m_Arm.moveArm(speed);
         }
 
@@ -35,7 +37,7 @@ public class autonArm extends CommandBase {
     }
 
     @Override
-    public Boolean isFinished() {
+    public boolean isFinished() {
         return isFinished;
     }
 }
