@@ -25,18 +25,18 @@ public class autonDrive extends CommandBase {
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+        m_Timer.start();
+    }
 
     @Override
     public void execute() {
-        m_Timer.start();
-        
+        RobotContainer.m_Chassis.driveChassis(driveSpeed, rotateSpeed);
+    
 
-        while(m_Timer.get() <= time) {
-            RobotContainer.m_Chassis.driveChassis(driveSpeed, rotateSpeed);
+        if(m_Timer.get() >= time) {
+            isFinished = true;
         }
-
-        isFinished = true;
     }
 
     @Override

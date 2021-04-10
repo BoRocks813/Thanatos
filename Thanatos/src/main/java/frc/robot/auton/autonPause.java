@@ -22,18 +22,18 @@ public class autonPause extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    m_Timer.start();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Timer.start();
 
-    while(m_Timer.get() <= time) {
-      isFinished = false;
+    if(m_Timer.get() >= time) {
+      isFinished = true;
     }
 
-    isFinished = true;
   }
 
   // Returns true when the command should end.

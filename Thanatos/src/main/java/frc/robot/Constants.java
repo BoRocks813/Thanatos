@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     public static final int CHASSIS_RIGHT_MOTOR = 0;
     public static final int CHASSIS_LEFT_MOTOR = 1;
 
-    // Sets the port on the computer to which the controller is plugged into
+    // Sets the port on the computer to which the controller is plugged into 
     public static final int DRIVER_CONTROLLER = 0;
 
     public static final int ARM_MOTOR = 2;
@@ -34,7 +34,6 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = (int) RobotContainer.driverController.getY(Hand.kRight);
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = (int) RobotContainer.driverController.getX(Hand.kLeft);
 
-    
     public static boolean autonOn = false; 
 
     public static int SOLENOID = 0;
@@ -42,4 +41,9 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     public final static double linearDriveSense = 1.0;
     public final static double lateralDriveSense = 1.0;
     public final static double moveArmSense = 1.0;
+
+    // Note: The following requires testing
+    public final static double armDefault = 20;
+    public final static double armLower = 0;
+    public final static double armUpper = 90;
 }

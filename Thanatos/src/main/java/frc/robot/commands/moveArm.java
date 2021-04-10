@@ -8,6 +8,8 @@ import frc.robot.*;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class moveArm extends CommandBase {
@@ -26,19 +28,15 @@ public class moveArm extends CommandBase {
   public void execute() {
     // Sets the triggers for the command
     double fwdSpeed = Constants.moveArmSense * RobotContainer.driverController.getTriggerAxis(Hand.kRight);
-    double bckSpeed = -(Constants.moveArmSense * RobotContainer.driverController.getTriggerAxis(Hand.kLeft));
+    double bckSpeed = Constants.moveArmSense * RobotContainer.driverController.getTriggerAxis(Hand.kLeft);
+
+    double moveSpeed = fwdSpeed - bckSpeed;
 
     // This code may not work:
+    WPI_TalonFX motor = RobotContainer.m_Arm.getMotor();
 
-    // Moves the arm according to the axis of the triggers (R=fwd, L=bckwd)
-    if(fwdSpeed == 0.0) {
-      while(bckSpeed != 0.0) {
-       RobotContainer.m_Arm.moveArm(bckSpeed);
-      }
-    } else if(bckSpeed == 0.0) {
-      while(fwdSpeed != 0.0) {
-        RobotContainer.m_Arm.moveArm(fwdSpeed);
-      }
+    if(motor.getSelectedSensorPosition() >= Constants.armLower && motor.getSelectedSensorPosition() <= Constants.armUpper) {
+      RobotContainer.m_Arm.moveArm(moveSpeed);
     }
     
   }

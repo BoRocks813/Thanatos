@@ -10,16 +10,21 @@ import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class Arm extends SubsystemBase {
-  WPI_TalonFX motor = null;
+  public WPI_TalonFX motor = null;
 
   /** Creates a new Arm. */
   public Arm() {
     // Sets the motor for the arm
     motor = new WPI_TalonFX(Constants.ARM_MOTOR);
+    motor.setSelectedSensorPosition(Constants.armDefault);
   }
 
   // Moves the arm
   public void moveArm(double speed) {
     motor.set(speed);
+  }
+
+  public WPI_TalonFX getMotor() {
+    return motor;
   }
 }

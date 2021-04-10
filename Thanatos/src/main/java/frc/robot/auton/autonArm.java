@@ -2,42 +2,33 @@ package frc.robot.auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import edu.wpi.first.wpilibj.Timer;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class autonArm extends CommandBase {
-    double speed;
-    double time;
-    
-    Timer m_Timer;
+    double position;
 
     Boolean isFinished = false;
+
+    WPI_TalonFX motor = RobotContainer.m_Arm.getMotor();
     
-    public autonArm(double speed, double time) {
+    public autonArm(double position) {
         addRequirements(RobotContainer.m_Arm);
 
-        m_Timer = new Timer();
-
-        this.speed = speed;
-        this.time = time;
+        this.position = position;
 
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+        motor.setSelectedSensorPosition(position);
+    }
 
     @Override
-    public void execute() {
-        m_Timer.start();
-
-        while(m_Timer.get() <= time) {
-            RobotContainer.m_Arm.moveArm(speed);
-        }
-
-        isFinished = true;
-    }
+    public void execute() {}
 
     @Override
     public boolean isFinished() {
-        return isFinished;
+        return motor.getSelectedSensorPosition() == position;
     }
 }
