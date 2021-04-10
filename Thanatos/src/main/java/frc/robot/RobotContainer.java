@@ -73,7 +73,7 @@ public class RobotContainer {
     Command com3 = new activateSolenoid();
     Command com4 = new autonDrive(0.5, 0.0, 1.0);
     Command com5 = new disengageSolenoid();
-    Command com6 = new autonArm(-1.0, 2.0);
+    Command com6 = new autonArm(10);
     Command com7 = new autonDrive(0.8, 0.0, 2.0);
     Command com8 = new autonPause(2.0);
 
