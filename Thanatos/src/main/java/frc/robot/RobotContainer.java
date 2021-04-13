@@ -32,6 +32,8 @@ public class RobotContainer {
 
   public final static Arm m_Arm = new Arm();
 
+  public static Command buttonACommand;
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -51,10 +53,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // Add the button bindings here
     JoystickButton buttonA = (JoystickButton) new JoystickButton(driverController, XboxController.Button.kA.value);
-    JoystickButton buttonB = (JoystickButton) new JoystickButton(driverController, XboxController.Button.kB.value);
-
-    buttonA.whenPressed(new activateSolenoid());
-    buttonB.whenPressed(new disengageSolenoid());
+    
+    buttonA.whenPressed(new toggleSolenoid());
   }
 
   /**

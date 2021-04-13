@@ -22,4 +22,9 @@ public class SolenoidMain extends SubsystemBase {
   public void stopSolenoid() {
     sol.set(false);
   }
+
+  public boolean get() {
+    return sol.get();
+  }
+
 }
