@@ -6,12 +6,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
 import frc.robot.commands.*;
-import frc.robot.subsystems.SolenoidMain;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.ArrayList;
 import frc.robot.auton.*;
 
@@ -27,10 +24,6 @@ public class RobotContainer {
   public final static Chassis m_Chassis = new Chassis();
 
   public static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
-
-  public final static SolenoidMain m_Solenoid = new SolenoidMain();
-
-  public final static Arm m_Arm = new Arm();
 
   public static Command buttonACommand;
 
@@ -52,9 +45,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     // Add the button bindings here
-    JoystickButton buttonA = (JoystickButton) new JoystickButton(driverController, XboxController.Button.kA.value);
     
-    buttonA.whenPressed(new toggleSolenoid());
   }
 
   /**
