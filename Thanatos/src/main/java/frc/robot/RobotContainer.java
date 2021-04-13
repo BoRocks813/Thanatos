@@ -68,24 +68,8 @@ public class RobotContainer {
     // Add auton commands here and make sure to add them to autonCommands
     // Below is an example
 
-    Command com1 = new autonDrive(1.0, 0.0, 3.0);
-    Command com2 = new autonDrive(0.5, 1.0, 1.0);
-    Command com3 = new activateSolenoid();
-    Command com4 = new autonDrive(0.5, 0.0, 1.0);
-    Command com5 = new disengageSolenoid();
-    Command com6 = new autonArm(10);
-    Command com7 = new autonDrive(0.8, 0.0, 2.0);
-    Command com8 = new autonPause(2.0);
-
-    autonCommands.add(com1);
-    autonCommands.add(com2);
-    autonCommands.add(com3);
-    autonCommands.add(com4);
-    autonCommands.add(com8);
-    autonCommands.add(com5);
-    autonCommands.add(com6);
-    autonCommands.add(com7);
-
+    autonCommands.add(new autonDrive(0.5, 0.0, 1.0));
+    autonCommands.add(new autonDrive(0.0, 0.5, 1.5));
 
     return autonCommands;
   }
