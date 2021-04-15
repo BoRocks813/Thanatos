@@ -24,8 +24,6 @@ public class Robot extends TimedRobot {
 
   public Timer m_teleopTimer;
 
-  public static int teleopTime;
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -98,7 +96,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    teleopTime = (int) (Constants.roundLength - m_teleopTimer.get());
   }
 
   @Override

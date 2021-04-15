@@ -6,17 +6,17 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class Dashboard extends TimedRobot {
-    NetworkTableEntry time;
+    NetworkTableEntry main;
 
     public void robotInit() {
         NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
-        NetworkTable otherTable = inst.getTable("other");
+        NetworkTable otherTable = inst.getTable("main");
 
-        time = otherTable.getEntry("time");
+        main = otherTable.getEntry("test");
     }
 
     public void teleopPeriodic() {
-        time.setNumber(Robot.teleopTime);
+        main.setValue("The test worked.");
     }
 }
