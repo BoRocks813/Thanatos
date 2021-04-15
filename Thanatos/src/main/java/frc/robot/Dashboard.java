@@ -1,17 +1,22 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
-/** Add your docs here. */
-public class Dashboard {
-    public static boolean autonOn = false;
+public class Dashboard extends TimedRobot {
+    NetworkTableEntry time;
 
-    public void execute() {
-        SmartDashboard.putBoolean("autonOn", autonOn);
-        
+    public void robotInit() {
+        NetworkTableInstance inst = NetworkTableInstance.getDefault();
+
+        NetworkTable otherTable = inst.getTable("other");
+
+        time = otherTable.getEntry("time");
+    }
+
+    public void teleopPeriodic() {
+        time.setNumber(Robot.teleopTime);
     }
 }
