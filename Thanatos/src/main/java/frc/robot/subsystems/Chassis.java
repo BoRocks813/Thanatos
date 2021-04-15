@@ -23,7 +23,9 @@ public class Chassis extends SubsystemBase {
 
     // Names the motors
     rMotor = new WPI_TalonFX(Constants.CHASSIS_RIGHT_MOTOR);
-    lMotor = new WPI_TalonFX(Constants.CHASSIS_LEFT_MOTOR); 
+    lMotor = new WPI_TalonFX(Constants.CHASSIS_LEFT_MOTOR);
+    
+    diffDrive = new DifferentialDrive(lMotor, rMotor);
   }
 
   public void driveChassis(double fwdSpeed, double rotAmt) {

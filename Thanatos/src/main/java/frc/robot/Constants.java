@@ -46,6 +46,4 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     public final static double armDefault = 20;
     public final static double armLower = 0;
     public final static double armUpper = 90;
-
-    public final static double roundLength = 100;
 }

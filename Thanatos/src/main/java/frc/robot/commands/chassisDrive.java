@@ -7,12 +7,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Chassis;
 
 public class chassisDrive extends CommandBase {
+
+  Chassis cChassis;
+
   /** Creates a new chassisDrive. */
-  public chassisDrive() {
+  public chassisDrive(Chassis chassis) {
+    cChassis = chassis;
     // adds a subsystem dependency
-    addRequirements(RobotContainer.m_Chassis);
+    addRequirements(cChassis);
   }
 
   // Called when the command is initially scheduled.
@@ -29,7 +34,7 @@ public class chassisDrive extends CommandBase {
     double rotateSpeed = Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
 
     // Calls the "driveChassis" command with the controller inputs as the commands
-    RobotContainer.m_Chassis.driveChassis(moveSpeed, rotateSpeed);
+    cChassis.driveChassis(moveSpeed, rotateSpeed);
   }
 
 }
