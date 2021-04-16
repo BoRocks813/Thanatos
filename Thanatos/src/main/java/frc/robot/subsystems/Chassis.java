@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Chassis extends SubsystemBase {
   // Initializes the motor variables
-  WPI_TalonFX rMotor = null; 
-  WPI_TalonFX lMotor = null;
+  public static WPI_TalonFX rMotor = null; 
+  public static WPI_TalonFX lMotor = null;
 
   DifferentialDrive diffDrive = null;
 

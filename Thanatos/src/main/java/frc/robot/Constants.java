@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants. This class should not be used for any other
@@ -31,8 +29,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     public static final int ARM_MOTOR = -1;
 
     // Sets the axes for the drive system joystick
-	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = (int) RobotContainer.driverController.getY(Hand.kRight);
-    public static final int DRIVER_CONTROLLER_MOVE_AXIS = (int) RobotContainer.driverController.getX(Hand.kLeft);
+	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
+    public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
 
     public static boolean autonOn = false; 
 

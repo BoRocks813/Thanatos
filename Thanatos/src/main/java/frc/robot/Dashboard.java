@@ -1,22 +1,14 @@
 package frc.robot;
 
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.shuffleboard.*;
 
 public class Dashboard {
-    public static void main(String[] args) {
-        new Dashboard().run();    
-    }
+    public static ShuffleboardTab tab = Shuffleboard.getTab("Main");
 
-    public void run() {
-        NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    public static NetworkTableEntry rMotorSpeed = tab.add("Right Motor Speed", 0.0).getEntry();
+    public static NetworkTableEntry lMotorSpeed = tab.add("Left Motor Speed", 0.0).getEntry();
+    public static NetworkTableEntry diffDriveSpeed = tab.add("Drive Speed", 0.0).getEntry();
 
-        NetworkTable otherTable = inst.getTable("main");
-
-        NetworkTableEntry main = otherTable.getEntry("test");
-
-        main.setValue("The test worked.");
-    }
-
+    
 }

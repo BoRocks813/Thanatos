@@ -6,6 +6,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
+import frc.robot.Dashboard;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Chassis;
 
@@ -30,8 +31,12 @@ public class chassisDrive extends CommandBase {
 
     // Sets the controller inputs to variables so they can be used easier
 
-    double moveSpeed = 0.2*Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(1);
-    double rotateSpeed = 0.2*Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(4);
+    double moveSpeed = Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
+    double rotateSpeed = Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
+
+    Dashboard.diffDriveSpeed.setDouble(moveSpeed);
+    Dashboard.lMotorSpeed.setDouble(Chassis.lMotor.get());
+    Dashboard.rMotorSpeed.setDouble(Chassis.rMotor.get());
 
     // Calls the "driveChassis" command with the controller inputs as the commands
     cChassis.driveChassis(moveSpeed, rotateSpeed);
