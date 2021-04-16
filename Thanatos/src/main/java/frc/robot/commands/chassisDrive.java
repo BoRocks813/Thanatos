@@ -30,8 +30,8 @@ public class chassisDrive extends CommandBase {
 
     // Sets the controller inputs to variables so they can be used easier
 
-    double moveSpeed = Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
-    double rotateSpeed = Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
+    double moveSpeed = 0.2*Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(1);
+    double rotateSpeed = 0.2*Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(4);
 
     // Calls the "driveChassis" command with the controller inputs as the commands
     cChassis.driveChassis(moveSpeed, rotateSpeed);

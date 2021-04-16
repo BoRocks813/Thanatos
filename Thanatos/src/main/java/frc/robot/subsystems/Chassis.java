@@ -30,7 +30,7 @@ public class Chassis extends SubsystemBase {
 
   public void driveChassis(double fwdSpeed, double rotAmt) {
     // Uses the "arcadeDrive" function to move the robot
-     diffDrive.arcadeDrive(fwdSpeed, rotAmt);
+     diffDrive.curvatureDrive(fwdSpeed, rotAmt, true);
   }
 
   

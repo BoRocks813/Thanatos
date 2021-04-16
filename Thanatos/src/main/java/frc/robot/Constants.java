@@ -22,8 +22,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     /* ***IMPORTANT*** Be sure you know what you're doing when changing these variables as 
     improper use could damage the robot. Make sure to double check they are the right values
     before running the code */
-    public static final int CHASSIS_RIGHT_MOTOR = -1;
-    public static final int CHASSIS_LEFT_MOTOR = -1;
+    public static final int CHASSIS_RIGHT_MOTOR = 2;
+    public static final int CHASSIS_LEFT_MOTOR = 1;
 
     // Sets the port on the computer to which the controller is plugged into 
     public static final int DRIVER_CONTROLLER = 0;
@@ -35,8 +35,6 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = (int) RobotContainer.driverController.getX(Hand.kLeft);
 
     public static boolean autonOn = false; 
-
-    public static int SOLENOID = -1;
 
     public final static double linearDriveSense = 1.0;
     public final static double lateralDriveSense = 1.0;
