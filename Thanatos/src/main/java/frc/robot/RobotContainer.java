@@ -60,7 +60,7 @@ public class RobotContainer {
     // Below is an example
 
     autonCommands.add(new autonDrive(0.4, 0.0, 1.0, m_Chassis));
-    autonCommands.add(new autonDrive(0.00, 0.5, 3.0, m_Chassis));
+    autonCommands.add(new autonDrive(0.1, 0.5, 3.0, m_Chassis));
 
     return autonCommands;
   }
