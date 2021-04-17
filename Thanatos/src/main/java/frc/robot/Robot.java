@@ -4,12 +4,10 @@
 
 package frc.robot;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 // import edu.wpi.cscore.HttpCamera;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -23,10 +21,6 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
-  public Timer teleopTimer = new Timer();
-
-  DecimalFormat df = new DecimalFormat("###.##");
 
   // private HttpCamera limeLightFeed;
 
@@ -100,8 +94,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    teleopTimer.reset();
-    teleopTimer.start();
 
 
   }
@@ -109,7 +101,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    Dashboard.driveTimer.setValue(df.format(teleopTimer.get()));
   }
 
   @Override
