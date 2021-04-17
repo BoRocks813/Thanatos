@@ -10,5 +10,6 @@ public class Dashboard {
     public static NetworkTableEntry lMotorSpeed = tab.add("Left Motor Speed", 0.0).getEntry();
     public static NetworkTableEntry diffDriveSpeed = tab.add("Drive Speed", 0.0).getEntry();
     public static NetworkTableEntry diffDriveRotate = tab.add("Drive Rotate", 0.0).getEntry();
+    public static NetworkTableEntry driveTimer = tab.add("Teleop Time", 0.0).getEntry();
 
 }
