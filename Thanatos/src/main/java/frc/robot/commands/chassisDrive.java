@@ -34,6 +34,7 @@ public class chassisDrive extends CommandBase {
     double moveSpeed = Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
     double rotateSpeed = Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
 
+    Dashboard.diffDriveRotate.setDouble(rotateSpeed);
     Dashboard.diffDriveSpeed.setDouble(moveSpeed);
     Dashboard.lMotorSpeed.setDouble(Chassis.lMotor.get());
     Dashboard.rMotorSpeed.setDouble(Chassis.rMotor.get());
