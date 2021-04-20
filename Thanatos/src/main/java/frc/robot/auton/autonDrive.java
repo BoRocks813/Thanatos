@@ -1,7 +1,6 @@
 package frc.robot.auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
 import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -18,7 +17,6 @@ public class autonDrive extends CommandBase {
     boolean isFinished = false;
     
     public autonDrive(double speed, double rotate, double amtTime, Chassis chassis) {
-        addRequirements(RobotContainer.m_Chassis);
 
         m_Timer = new Timer();
 
@@ -30,6 +28,7 @@ public class autonDrive extends CommandBase {
 
     @Override
     public void initialize() {
+        m_Timer.reset();
         m_Timer.start();
     }
 

@@ -34,8 +34,8 @@ package frc.robot;
 
     public static boolean autonOn = false; 
 
-    public final static double linearDriveSense = 1.0;
-    public final static double lateralDriveSense = 1.0;
+    public final static double linearDriveSense = 0.5;
+    public final static double lateralDriveSense = 0.2;
     public final static double moveArmSense = 1.0;
 
     // Note: The following requires testing
