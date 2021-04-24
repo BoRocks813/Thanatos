@@ -36,8 +36,8 @@ import edu.wpi.first.wpilibj.util.Units;
 
     public static boolean autonOn = false; 
 
-    public final static double linearDriveSense = 0.5;
-    public final static double lateralDriveSense = 0.2;
+    public final static double linearDriveSense = 0.8;
+    public final static double lateralDriveSense = 0.7;
     public final static double moveArmSense = 1.0;
 
     // Note: The following requires testing
@@ -51,7 +51,7 @@ import edu.wpi.first.wpilibj.util.Units;
     public final static double gearRatio = 52 / 14 * 52 / 24;
     public final static double wheelDiameter = Units.inchesToMeters(4);
 
-    public final static double physicsLabkS = 1.0;
-    public final static double physicsLabkV = 1.0;
-    public final static double physicsLabkA = 1.0;
+    public final static double carpetLabkS = 0.696;
+    public final static double carpetLabkV = 0.854;
+    public final static double carpetLabkA = 0.061;
 }

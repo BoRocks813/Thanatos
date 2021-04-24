@@ -6,36 +6,23 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Dashboard;
 
+import com.ctre.phoenix.motorcontrol.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.SPI;
-import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.geometry.Pose2d;
-import edu.wpi.first.wpilibj.geometry.Rotation2d;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveOdometry;
-import edu.wpi.first.wpilibj.kinematics.DifferentialDriveWheelSpeeds;
-
 
 public class Chassis extends SubsystemBase {
   // Initializes the motor variables
   public static WPI_TalonFX rMotor = null; 
   public static WPI_TalonFX lMotor = null;
+  
+  public static DifferentialDrive diffDrive = null;
 
-  Gyro gyro = new ADXRS450_Gyro(SPI.Port.kMXP);
-
-  DifferentialDrive diffDrive = null;
-
-  DifferentialDriveKinematics kinematics = new DifferentialDriveKinematics(Constants.trackWidthMeters);
-  DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(getHeading());
-
-  Pose2d pose;
-
-  SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(Constants.physicsLabkS, Constants.physicsLabkV, Constants.physicsLabkA);
+  public AHRS gyro = null;
 
   /** Creates a new Chassis. */
   public Chassis() {
@@ -43,32 +30,32 @@ public class Chassis extends SubsystemBase {
     // Names the motors
     rMotor = new WPI_TalonFX(Constants.CHASSIS_RIGHT_MOTOR);
     lMotor = new WPI_TalonFX(Constants.CHASSIS_LEFT_MOTOR);
+
+    gyro = new AHRS(SPI.Port.kMXP);
+
+    rMotor.setNeutralMode(NeutralMode.Brake);
+    lMotor.setNeutralMode(NeutralMode.Brake);
     
     diffDrive = new DifferentialDrive(lMotor, rMotor);
-  }
-
-  public Rotation2d getHeading() {
-    return Rotation2d.fromDegrees(-gyro.getAngle());
-  }
-
-  
+  }  
 
   public void driveChassis(double fwdSpeed, double rotAmt) {
     // Uses the "arcadeDrive" function to move the robot
      diffDrive.curvatureDrive(fwdSpeed, rotAmt, true);
   }
 
+  public double getVelocityMeters(double sensorValue) {
+    double motorRotations = sensorValue / 2048;
+    double wheelRotations = motorRotations / Constants.gearRatio;
+    double positionMeters = wheelRotations * (2 * Math.PI * Constants.wheelDiameter);
+    return positionMeters;
+  }
+
   @Override
   public void periodic() {
-    pose = odometry.update(getHeading(), getLMotorSpeed(), getRMotorSpeed());
+    Dashboard.ldriveVelocity.setDouble(
+      lMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
+    Dashboard.rdriveVelocity.setDouble(
+      rMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
   }
-
-  public double getLMotorSpeed() {
-    return lMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter;
-  }
-  
-  public double getRMotorSpeed() {
-    return rMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter;
-  }
-
 }
