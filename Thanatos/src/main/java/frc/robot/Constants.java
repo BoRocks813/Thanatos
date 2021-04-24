@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.util.Units;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean constants. This class should not be used for any other
@@ -20,7 +22,7 @@ package frc.robot;
     /* ***IMPORTANT*** Be sure you know what you're doing when changing these variables as 
     improper use could damage the robot. Make sure to double check they are the right values
     before running the code */
-    public static final int CHASSIS_RIGHT_MOTOR = 2;
+    public static final int CHASSIS_RIGHT_MOTOR = 0;
     public static final int CHASSIS_LEFT_MOTOR = 1;
 
     // Sets the port on the computer to which the controller is plugged into 
@@ -42,4 +44,14 @@ package frc.robot;
     public final static double armDefault = 20;
     public final static double armLower = 0;
     public final static double armUpper = 90;
+
+
+
+    public final static double trackWidthMeters = Units.inchesToMeters(19.5);
+    public final static double gearRatio = 52 / 14 * 52 / 24;
+    public final static double wheelDiameter = Units.inchesToMeters(4);
+
+    public final static double physicsLabkS = 1.0;
+    public final static double physicsLabkV = 1.0;
+    public final static double physicsLabkA = 1.0;
 }
