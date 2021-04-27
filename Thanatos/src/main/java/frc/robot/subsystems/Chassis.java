@@ -58,4 +58,8 @@ public class Chassis extends SubsystemBase {
     Dashboard.rdriveVelocity.setDouble(
       rMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
   }
+
+  public AHRS getGyro() {
+    return gyro;
+  }
 }

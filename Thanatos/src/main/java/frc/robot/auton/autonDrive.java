@@ -16,14 +16,14 @@ public class autonDrive extends CommandBase {
 
     boolean isFinished = false;
     
-    public autonDrive(double speed, double rotate, double amtTime, Chassis chassis) {
+    public autonDrive(double speed, double rotate, double amtTime, Chassis cChassis) {
 
         m_Timer = new Timer();
 
         driveSpeed = speed;
         rotateSpeed = rotate;
         time = amtTime;
-        this.chassis = chassis;
+        this.chassis = cChassis;
     }
 
     @Override
@@ -35,16 +35,11 @@ public class autonDrive extends CommandBase {
     @Override
     public void execute() {
         chassis.driveChassis(driveSpeed, rotateSpeed);
-    
-
-        if(m_Timer.get() >= time) {
-            isFinished = true;
-        }
     }
 
     @Override
     public boolean isFinished() {
-        return isFinished;
+        return (m_Timer.hasPeriodPassed(time));
     }
 
 }

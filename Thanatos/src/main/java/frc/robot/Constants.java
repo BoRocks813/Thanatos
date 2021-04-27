@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.util.Units;
     /* ***IMPORTANT*** Be sure you know what you're doing when changing these variables as 
     improper use could damage the robot. Make sure to double check they are the right values
     before running the code */
-    public static final int CHASSIS_RIGHT_MOTOR = 0;
+    public static final int CHASSIS_RIGHT_MOTOR = 2;
     public static final int CHASSIS_LEFT_MOTOR = 1;
 
     // Sets the port on the computer to which the controller is plugged into 
@@ -54,4 +54,6 @@ import edu.wpi.first.wpilibj.util.Units;
     public final static double carpetLabkS = 0.696;
     public final static double carpetLabkV = 0.854;
     public final static double carpetLabkA = 0.061;
+
+    public final static boolean autonIsPresent = true;
 }

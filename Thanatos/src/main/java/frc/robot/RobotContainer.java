@@ -6,10 +6,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
 import frc.robot.commands.*;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.auton.*;
@@ -28,6 +28,8 @@ public class RobotContainer {
   public static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
   public final static Arm m_Arm = new Arm();
+
+  private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -51,16 +53,14 @@ public class RobotContainer {
     bButton.whenPressed(new resetGyro(m_Chassis));
   }
 
+  public Command getAutonCommand() {
+    return autonCommands;
+  }
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
-  public static SequentialCommandGroup getAutonomousCommands() {
-    SequentialCommandGroup commands = new SequentialCommandGroup();
-
-    commands.addCommands(new autonDrive(1.0, 0.0, 1.0, m_Chassis), new autonDrive(0.1, 0.5, 1.0, m_Chassis));
-
-    return commands;
-  }
+  
 }
