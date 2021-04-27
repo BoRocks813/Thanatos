@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
@@ -14,53 +13,42 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.auton.*;
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and button mappings) should be declared here.
- */
+// This is where the bulk of the robot is declared
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-
+  // Initializes the Chassis
   public final static Chassis m_Chassis = new Chassis();
 
+  // Initializes the Controller
   public static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
+  // Initializes the Arm
   public final static Arm m_Arm = new Arm();
 
+  // Initializes the autonomous commands
   private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis);
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  // Creates the RobotContainer
   public RobotContainer() {
-    // Configure the button bindings (See function below)
+    // Configures the button bindings
+    // B resets the gyro (if using a navx)
     configureButtonBindings();
 
-    // Sets the default command for the chassiss
+    // Sets it so that the Chassis will drive in response to the controller by default
     m_Chassis.setDefaultCommand(new chassisDrive(m_Chassis));
   }
 
-  /**
-   * Use this method to define your button->command mappings. Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
+  // Configures
   private void configureButtonBindings() {
-    // Add the button bindings here
+    // Initializes the B button on the Xbox controller
     JoystickButton bButton = new JoystickButton(driverController, XboxController.Button.kB.value);
 
+    // Sets it so that when the B button is pressed, the gyro resets
     bButton.whenPressed(new resetGyro(m_Chassis));
   }
 
+  // Gets the auton commands
   public Command getAutonCommand() {
     return autonCommands;
   }
 
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  
 }

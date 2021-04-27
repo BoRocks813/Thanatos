@@ -4,8 +4,10 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.shuffleboard.*;
 
 public class Dashboard {
+    // Adds the main tab in which data will be displayed
     public static ShuffleboardTab tab = Shuffleboard.getTab("Main");
 
+    // Adds all of the variables that will be sent to the dashboard
     public static NetworkTableEntry rMotorSpeed = tab.add("Right Motor Speed", 0.0).getEntry();
     public static NetworkTableEntry lMotorSpeed = tab.add("Left Motor Speed", 0.0).getEntry();
     public static NetworkTableEntry diffDriveSpeed = tab.add("Drive Speed", 0.0).getEntry();

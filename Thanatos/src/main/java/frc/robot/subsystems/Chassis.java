@@ -20,30 +20,38 @@ public class Chassis extends SubsystemBase {
   public static WPI_TalonFX rMotor = null; 
   public static WPI_TalonFX lMotor = null;
   
+  // Initializes the differential drive
   public static DifferentialDrive diffDrive = null;
 
+  // Initializes the gyro (if we use one)
   public AHRS gyro = null;
 
-  /** Creates a new Chassis. */
+  // Creates a new chassis
   public Chassis() {
 
-    // Names the motors
+    // Instantiates the motors
     rMotor = new WPI_TalonFX(Constants.CHASSIS_RIGHT_MOTOR);
     lMotor = new WPI_TalonFX(Constants.CHASSIS_LEFT_MOTOR);
 
-    gyro = new AHRS(SPI.Port.kMXP);
-
+    // Sets the motors to brake by default, removing drifting
     rMotor.setNeutralMode(NeutralMode.Brake);
     lMotor.setNeutralMode(NeutralMode.Brake);
+
+    // Instantiates the gyro
+    gyro = new AHRS(SPI.Port.kMXP);
     
+    // Instantiates the differential drive
     diffDrive = new DifferentialDrive(lMotor, rMotor);
   }  
 
+  // The method used to drive the chassis
   public void driveChassis(double fwdSpeed, double rotAmt) {
-    // Uses the "arcadeDrive" function to move the robot
+    // Uses curvature drive to move the robot
      diffDrive.curvatureDrive(fwdSpeed, rotAmt, true);
   }
 
+  // Should get the velocity in meters/second if I did the math right
+  // Most likely gives you a random number :)
   public double getVelocityMeters(double sensorValue) {
     double motorRotations = sensorValue / 2048;
     double wheelRotations = motorRotations / Constants.gearRatio;
@@ -51,6 +59,7 @@ public class Chassis extends SubsystemBase {
     return positionMeters;
   }
 
+  // Updates the velocity variables
   @Override
   public void periodic() {
     Dashboard.ldriveVelocity.setDouble(
@@ -59,6 +68,7 @@ public class Chassis extends SubsystemBase {
       rMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
   }
 
+  // A method to get the gyro
   public AHRS getGyro() {
     return gyro;
   }

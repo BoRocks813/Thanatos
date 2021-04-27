@@ -25,15 +25,14 @@ public class chassisDrive extends CommandBase {
   @Override
   public void initialize() {}
 
-  // Called every time the scheduler runs while the command is scheduled.
+  // Called periodically while the command is active
   @Override
   public void execute() {
-
-    // Sets the controller inputs to variables so they can be used easier
-
+    // Sets the speeds of movement and rotation to inputs from the controller
     double moveSpeed = -Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
     double rotateSpeed = Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
 
+    // Updates the values on the dashboard
     Dashboard.diffDriveRotate.setDouble(rotateSpeed);
     Dashboard.diffDriveSpeed.setDouble(moveSpeed);
     Dashboard.lMotorSpeed.setDouble(Chassis.lMotor.get());
