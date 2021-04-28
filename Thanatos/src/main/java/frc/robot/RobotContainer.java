@@ -15,16 +15,16 @@ import frc.robot.auton.*;
 
 // This is where the bulk of the robot is declared
 public class RobotContainer {
-  // Initializes the Chassis
+  // Instantiates the Chassis
   public final static Chassis m_Chassis = new Chassis();
 
-  // Initializes the Controller
+  // Instantiates the Controller
   public static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
-  // Initializes the Arm
+  // Instantiates the Arm
   public final static Arm m_Arm = new Arm();
 
-  // Initializes the autonomous commands
+  // Instantiates the autonomous commands
   private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis);
 
   // Creates the RobotContainer
@@ -39,7 +39,7 @@ public class RobotContainer {
 
   // Configures
   private void configureButtonBindings() {
-    // Initializes the B button on the Xbox controller
+    // Instantiates the B button on the Xbox controller
     JoystickButton bButton = new JoystickButton(driverController, XboxController.Button.kB.value);
 
     // Sets it so that when the B button is pressed, the gyro resets
