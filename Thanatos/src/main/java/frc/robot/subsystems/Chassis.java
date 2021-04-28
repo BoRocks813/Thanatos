@@ -9,7 +9,7 @@ import frc.robot.Constants;
 import frc.robot.Dashboard;
 
 import com.ctre.phoenix.motorcontrol.*;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX; 
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.SPI;
@@ -17,14 +17,14 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Chassis extends SubsystemBase {
   // Initializes the motor variables
-  public static WPI_TalonFX rMotor = null; 
-  public static WPI_TalonFX lMotor = null;
-  
+  private final WPI_TalonFX rMotor; 
+  private final WPI_TalonFX lMotor;
+
   // Initializes the differential drive
-  public static DifferentialDrive diffDrive = null;
+  private final DifferentialDrive diffDrive;
 
   // Initializes the gyro (if we use one)
-  public AHRS gyro = null;
+  private final AHRS gyro;
 
   // Creates a new chassis
   public Chassis() {
@@ -39,15 +39,15 @@ public class Chassis extends SubsystemBase {
 
     // Instantiates the gyro
     gyro = new AHRS(SPI.Port.kMXP);
-    
+
     // Instantiates the differential drive
     diffDrive = new DifferentialDrive(lMotor, rMotor);
-  }  
+  }
 
   // The method used to drive the chassis
   public void driveChassis(double fwdSpeed, double rotAmt) {
     // Uses curvature drive to move the robot
-     diffDrive.curvatureDrive(fwdSpeed, rotAmt, true);
+    diffDrive.curvatureDrive(fwdSpeed, rotAmt, true);
   }
 
   // Should get the velocity in meters/second if I did the math right
@@ -63,13 +63,17 @@ public class Chassis extends SubsystemBase {
   @Override
   public void periodic() {
     Dashboard.ldriveVelocity.setDouble(
-      lMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
+        lMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
     Dashboard.rdriveVelocity.setDouble(
-      rMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
+        rMotor.getSelectedSensorVelocity() / 2048 * 1000 / Constants.gearRatio * Math.PI * Constants.wheelDiameter);
+
+    Dashboard.lMotorSpeed.setDouble(lMotor.get());
+    Dashboard.rMotorSpeed.setDouble(rMotor.get());
   }
 
   // A method to get the gyro
   public AHRS getGyro() {
     return gyro;
   }
+
 }

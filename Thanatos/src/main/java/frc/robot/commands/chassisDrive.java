@@ -12,7 +12,7 @@ import frc.robot.subsystems.Chassis;
 
 public class chassisDrive extends CommandBase {
 
-  Chassis cChassis;
+  private final Chassis cChassis;
 
   /** Creates a new chassisDrive. */
   public chassisDrive(Chassis chassis) {
@@ -29,16 +29,13 @@ public class chassisDrive extends CommandBase {
   @Override
   public void execute() {
     // Sets the speeds of movement and rotation to inputs from the controller
-    double moveSpeed = -Constants.linearDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
-    double rotateSpeed = Constants.lateralDriveSense * RobotContainer.driverController.getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
+    double moveSpeed = -Constants.linearDriveSense * RobotContainer.getController().getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
+    double rotateSpeed = Constants.lateralDriveSense * RobotContainer.getController().getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
 
     // Updates the values on the dashboard
     Dashboard.diffDriveRotate.setDouble(rotateSpeed);
     Dashboard.diffDriveSpeed.setDouble(moveSpeed);
-    Dashboard.lMotorSpeed.setDouble(Chassis.lMotor.get());
-    Dashboard.rMotorSpeed.setDouble(Chassis.rMotor.get());
-
-
+    
     // Calls the "driveChassis" command with the controller inputs as the commands
     cChassis.driveChassis(moveSpeed, rotateSpeed);
   }

@@ -10,7 +10,7 @@ import frc.robot.Constants;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class Arm extends SubsystemBase {
-  public WPI_TalonFX motor = null;
+  private final WPI_TalonFX motor;
 
   /** Creates a new Arm. */
   public Arm() {

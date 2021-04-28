@@ -19,10 +19,10 @@ public class RobotContainer {
   public final static Chassis m_Chassis = new Chassis();
 
   // Instantiates the Controller
-  public static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
+  private final static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
   // Instantiates the Arm
-  public final static Arm m_Arm = new Arm();
+  private final Arm m_Arm = new Arm();
 
   // Instantiates the autonomous commands
   private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis);
@@ -35,6 +35,9 @@ public class RobotContainer {
 
     // Sets it so that the Chassis will drive in response to the controller by default
     m_Chassis.setDefaultCommand(new chassisDrive(m_Chassis));
+
+    // Sets it so that the arm will move in response to the controller by default
+    m_Arm.setDefaultCommand(new moveArm(m_Arm));
   }
 
   // Configures
@@ -51,4 +54,7 @@ public class RobotContainer {
     return autonCommands;
   }
 
+  public static XboxController getController() {
+    return driverController;
+  }
 }

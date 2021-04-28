@@ -1,31 +1,42 @@
 package frc.robot.auton;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.RobotContainer;
+import frc.robot.subsystems.Arm;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class autonArm extends CommandBase {
-    double position;
+    private final double position;
 
-    Boolean isFinished = false;
+    private Boolean isFinished = false;
 
-    WPI_TalonFX motor = RobotContainer.m_Arm.getMotor();
+    private final WPI_TalonFX motor;
     
-    public autonArm(double position) {
-        addRequirements(RobotContainer.m_Arm);
+    private final Arm m_Arm;
+    
+    public autonArm(double position, Arm cArm) {
+        m_Arm = cArm;
+        
+        addRequirements(m_Arm);
 
         this.position = position;
 
+        motor = m_Arm.getMotor();
     }
 
     @Override
-    public void initialize() {
-        motor.setSelectedSensorPosition(position);
-    }
+    public void initialize() {}
 
     @Override
-    public void execute() {}
+    public void execute() {
+        if (position - motor.getSelectedSensorPosition() <= 50 && position - motor.getSelectedSensorPosition() >= -50 ) {
+            if (position < motor.getSelectedSensorPosition()) {
+                m_Arm.moveArm(0.5);
+            } else if (position > motor.getSelectedSensorPosition()) {
+                m_Arm.moveArm(-0.5);
+            }
+        }
+    }
 
     @Override
     public boolean isFinished() {
