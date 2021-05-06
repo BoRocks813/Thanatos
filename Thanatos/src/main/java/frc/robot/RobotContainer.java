@@ -43,10 +43,14 @@ public class RobotContainer {
   // Configures
   private void configureButtonBindings() {
     // Instantiates the B button on the Xbox controller
+    JoystickButton xButton = new JoystickButton(driverController, XboxController.Button.kX.value);
     JoystickButton bButton = new JoystickButton(driverController, XboxController.Button.kB.value);
+    JoystickButton aButton = new JoystickButton(driverController, XboxController.Button.kA.value);
 
     // Sets it so that when the B button is pressed, the gyro resets
-    bButton.whenPressed(new resetGyro(m_Chassis));
+    xButton.whenPressed(new resetGyro(m_Chassis));
+    bButton.whenPressed(new yesBrake(m_Chassis));
+    aButton.whenPressed(new noBrake(m_Chassis));
   }
 
   // Gets the auton commands

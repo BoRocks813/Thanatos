@@ -34,8 +34,6 @@ public class Chassis extends SubsystemBase {
     lMotor = new WPI_TalonFX(Constants.CHASSIS_LEFT_MOTOR);
 
     // Sets the motors to brake by default, removing drifting
-    rMotor.setNeutralMode(NeutralMode.Brake);
-    lMotor.setNeutralMode(NeutralMode.Brake);
 
     // Instantiates the gyro
     gyro = new AHRS(SPI.Port.kMXP);
@@ -69,6 +67,16 @@ public class Chassis extends SubsystemBase {
 
     Dashboard.lMotorSpeed.setDouble(lMotor.get());
     Dashboard.rMotorSpeed.setDouble(rMotor.get());
+  }
+
+  public void disengageBrake() {
+    lMotor.setNeutralMode(NeutralMode.Coast);
+    rMotor.setNeutralMode(NeutralMode.Coast);
+  }
+
+  public void enableBrake() {
+    lMotor.setNeutralMode(NeutralMode.Brake);
+    rMotor.setNeutralMode(NeutralMode.Brake);
   }
 
   // A method to get the gyro
