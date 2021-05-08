@@ -24,6 +24,9 @@ import edu.wpi.first.wpilibj.util.Units;
 	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
 
+    public static final int LEFT_TRIGGER_AXIS = 2;
+    public static final int RIGHT_TRIGGER_AXIS = 3;
+
     public static boolean autonOn = false; 
 
     public final static double linearDriveSense = 0.8;
@@ -31,12 +34,10 @@ import edu.wpi.first.wpilibj.util.Units;
     public final static double moveArmSense = 0.1;
 
     // Note: The following requires testing
-    public final static double armDefault = 20;
-    public final static double armLower = 0;
-    public final static double armUpper = 90;
+    public final static double armLower = -20;
+    public final static double armUpper = 512;
 
     public final static boolean gyro = false;
-
 
     // Values important for trajectory-based auton (if we get it to work)
     public final static double trackWidthMeters = Units.inchesToMeters(19.5);

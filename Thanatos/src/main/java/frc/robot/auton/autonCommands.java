@@ -5,6 +5,7 @@
 package frc.robot.auton;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Chassis;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -13,14 +14,16 @@ import frc.robot.subsystems.Chassis;
 public class autonCommands extends SequentialCommandGroup {
   /** Creates a new autonCommands. */
   Chassis cChassis;
+  Arm cArm;
 
-  public autonCommands(Chassis chassis) {
+  public autonCommands(Chassis chassis, Arm arm) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand()
     cChassis = chassis;
+    cArm = arm;
+
     addCommands(
-      new autonDrive(1.0, 0.0, 1.0, cChassis), 
-      new autonDrive(0.0, 0.5, 1.0, cChassis));
+      new autonArm(0.1, cArm, 0.5));
   }
 
 }

@@ -15,6 +15,7 @@ import frc.robot.auton.*;
 
 // This is where the bulk of the robot is declared
 public class RobotContainer {
+
   // Instantiates the Chassis
   public final static Chassis m_Chassis = new Chassis();
 
@@ -25,7 +26,7 @@ public class RobotContainer {
   private final Arm m_Arm = new Arm();
 
   // Instantiates the autonomous commands
-  private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis);
+  private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis, m_Arm);
 
   // Creates the RobotContainer
   public RobotContainer() {
@@ -37,7 +38,7 @@ public class RobotContainer {
     m_Chassis.setDefaultCommand(new chassisDrive(m_Chassis));
 
     // Sets it so that the arm will move in response to the controller by default
-    
+    m_Arm.setDefaultCommand(new moveArm(m_Arm));
   }
 
   // Configures
@@ -56,11 +57,11 @@ public class RobotContainer {
     bButton.whenPressed(new yesBrake(m_Chassis));
     aButton.whenPressed(new noBrake(m_Chassis));
 
-    rBumper.whileHeld(new moveArmAtSpeed(1.00, m_Arm));
-    lBumper.whileHeld(new moveArmAtSpeed(-1.00, m_Arm));
+    rBumper.whileHeld(new moveArmAtSpeed(0.1, m_Arm));
+    lBumper.whileHeld(new moveArmAtSpeed(-0.1, m_Arm));
 
     if (Constants.gyro) {
-    yButton.whenPressed(new resetGyro(m_Chassis));
+      yButton.whenPressed(new resetGyro(m_Chassis));
     }
   }
 
