@@ -37,7 +37,7 @@ public class RobotContainer {
     m_Chassis.setDefaultCommand(new chassisDrive(m_Chassis));
 
     // Sets it so that the arm will move in response to the controller by default
-    m_Arm.setDefaultCommand(new moveArm(m_Arm));
+    
   }
 
   // Configures
@@ -46,11 +46,22 @@ public class RobotContainer {
     JoystickButton xButton = new JoystickButton(driverController, XboxController.Button.kX.value);
     JoystickButton bButton = new JoystickButton(driverController, XboxController.Button.kB.value);
     JoystickButton aButton = new JoystickButton(driverController, XboxController.Button.kA.value);
+    JoystickButton yButton = new JoystickButton(driverController, XboxController.Button.kY.value);
+
+    JoystickButton rBumper = new JoystickButton(driverController, XboxController.Button.kBumperRight.value);
+    JoystickButton lBumper = new JoystickButton(driverController, XboxController.Button.kBumperLeft.value);
 
     // Sets it so that when the B button is pressed, the gyro resets
-    xButton.whenPressed(new resetGyro(m_Chassis));
+    xButton.whenPressed(new setPosition0(m_Arm));
     bButton.whenPressed(new yesBrake(m_Chassis));
     aButton.whenPressed(new noBrake(m_Chassis));
+
+    rBumper.whileHeld(new moveArmAtSpeed(1.00, m_Arm));
+    lBumper.whileHeld(new moveArmAtSpeed(-1.00, m_Arm));
+
+    if (Constants.gyro) {
+    yButton.whenPressed(new resetGyro(m_Chassis));
+    }
   }
 
   // Gets the auton commands

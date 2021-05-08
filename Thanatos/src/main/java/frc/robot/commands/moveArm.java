@@ -30,17 +30,13 @@ public class moveArm extends CommandBase {
   @Override
   public void execute() {
     // Sets the triggers for the command
-    double fwdSpeed = Constants.moveArmSense * RobotContainer.getController().getTriggerAxis(Hand.kRight);
-    double bckSpeed = Constants.moveArmSense * RobotContainer.getController().getTriggerAxis(Hand.kLeft);
 
-    double moveSpeed = fwdSpeed - bckSpeed;
+
 
     // This code may not work:
     WPI_TalonFX motor = m_Arm.getMotor();
 
-    if(motor.getSelectedSensorPosition() >= Constants.armLower && motor.getSelectedSensorPosition() <= Constants.armUpper) {
-      m_Arm.moveArm(moveSpeed);
-    }
+    
     
   }
 

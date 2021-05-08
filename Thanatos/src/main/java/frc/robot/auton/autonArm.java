@@ -8,8 +8,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 public class autonArm extends CommandBase {
     private final double position;
 
-    private Boolean isFinished = false;
-
     private final WPI_TalonFX motor;
     
     private final Arm m_Arm;
@@ -29,13 +27,7 @@ public class autonArm extends CommandBase {
 
     @Override
     public void execute() {
-        if (position - motor.getSelectedSensorPosition() <= 50 && position - motor.getSelectedSensorPosition() >= -50 ) {
-            if (position < motor.getSelectedSensorPosition()) {
-                m_Arm.moveArm(0.5);
-            } else if (position > motor.getSelectedSensorPosition()) {
-                m_Arm.moveArm(-0.5);
-            }
-        }
+        
     }
 
     @Override

@@ -6,17 +6,42 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Dashboard;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 public class Arm extends SubsystemBase {
   private final WPI_TalonFX motor;
 
+  double motorPosition;
+
   /** Creates a new Arm. */
   public Arm() {
     // Sets the motor for the arm
     motor = new WPI_TalonFX(Constants.ARM_MOTOR);
-    motor.setSelectedSensorPosition(Constants.armDefault);
+
+    motor.config_kP(0, 1.0);
+    motor.config_kI(0,0);
+    motor.config_kD(0,0);
+
+    motor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+
+    motor.setSelectedSensorPosition(0);
+
+    motor.setNeutralMode(NeutralMode.Brake);
+    motor.configPeakOutputForward(1.00);
+    motor.configPeakOutputReverse(1.00);
+
+    motor.configNeutralDeadband(0.01);
+
+    motor.setInverted(TalonFXInvertType.Clockwise);
+  }
+
+  @Override
+  public void periodic() {
   }
 
   // Moves the arm

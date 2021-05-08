@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.util.Units;
     // Sets the port on the computer to which the controller is plugged into 
     public static final int DRIVER_CONTROLLER = 0;
 
-    public static final int ARM_MOTOR = -1;
+    public static final int ARM_MOTOR = 3;
 
     // Sets the axes for the drive system joystick
 	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
@@ -28,12 +28,14 @@ import edu.wpi.first.wpilibj.util.Units;
 
     public final static double linearDriveSense = 0.8;
     public final static double lateralDriveSense = 0.7;
-    public final static double moveArmSense = 1.0;
+    public final static double moveArmSense = 0.1;
 
     // Note: The following requires testing
     public final static double armDefault = 20;
     public final static double armLower = 0;
     public final static double armUpper = 90;
+
+    public final static boolean gyro = false;
 
 
     // Values important for trajectory-based auton (if we get it to work)

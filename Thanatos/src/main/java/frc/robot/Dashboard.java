@@ -16,6 +16,7 @@ public class Dashboard {
     public static NetworkTableEntry ldriveVelocity = tab.add("Left Motor Velocity", 0.0).getEntry();
     public static NetworkTableEntry rdriveVelocity = tab.add("Right Motor Velocity", 0.0).getEntry();
     public static ComplexWidget gyro = tab.add("Gyro", RobotContainer.m_Chassis.getGyro());
+    public static NetworkTableEntry armPosition = tab.add("Arm Position", 0.0).getEntry();
     
 
 }
