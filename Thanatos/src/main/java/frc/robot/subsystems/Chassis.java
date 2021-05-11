@@ -67,6 +67,11 @@ public class Chassis extends SubsystemBase {
 
     Dashboard.lMotorSpeed.setDouble(lMotor.get());
     Dashboard.rMotorSpeed.setDouble(rMotor.get());
+
+    lMotor.feed();
+    rMotor.feed();      
+    diffDrive.feed();
+    diffDrive.feedWatchdog();
   }
 
   public void disengageBrake() {

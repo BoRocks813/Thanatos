@@ -36,7 +36,7 @@ public class Arm extends SubsystemBase {
     motor.configPeakOutputForward(1.00);
     motor.configPeakOutputReverse(-1.00);
 
-    motor.setInverted(TalonFXInvertType.CounterClockwise);
+    motor.setInverted(TalonFXInvertType.Clockwise);
   }
 
   public double getPosition() {
@@ -47,6 +47,7 @@ public class Arm extends SubsystemBase {
   public void periodic() {
     motorPosition = motor.getSelectedSensorPosition();
     Dashboard.armPosition.setDouble(motorPosition);
+    motor.feed();
   }
 
   // Moves the arm

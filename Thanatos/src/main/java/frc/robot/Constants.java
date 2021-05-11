@@ -21,7 +21,14 @@ import edu.wpi.first.wpilibj.util.Units;
     public static final int ARM_MOTOR = 3;
 
     // Sets the axes for the drive system joystick
-	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
+    // Note: The axes are as followed:
+    // 0 = left right/left
+    // 1 = left front/back
+    // 2 = left trigger
+    // 3 = right trigger
+    // 4 = right right/left
+    // 5 = right front/back 
+	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 0;
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
 
     public static final int LEFT_TRIGGER_AXIS = 2;
