@@ -51,23 +51,37 @@ public class RobotContainer {
 
     JoystickButton rBumper = new JoystickButton(driverController, XboxController.Button.kBumperRight.value);
     JoystickButton lBumper = new JoystickButton(driverController, XboxController.Button.kBumperLeft.value);
+    
 
     // Sets it so that when the B button is pressed, the gyro resets
-    xButton.whenPressed(new setPosition0(m_Arm));
-    bButton.whenPressed(new yesBrake(m_Chassis));
-    aButton.whenPressed(new noBrake(m_Chassis));
+    
 
-    rBumper.whileHeld(new moveArmAtSpeed(0.1, m_Arm));
-    lBumper.whileHeld(new moveArmAtSpeed(-0.1, m_Arm));
-
-    if (Constants.gyro) {
-      yButton.whenPressed(new resetGyro(m_Chassis));
+    if (Constants.driver == 2) {
+      aButton.whileHeld(new moveArmAtSpeed(0.1, m_Arm));
+      bButton.whileHeld(new moveArmAtSpeed(-0.1, m_Arm));
+      xButton.whenPressed(new yesBrake(m_Chassis));
+      yButton.whenPressed(new noBrake(m_Chassis));
+    } else {
+      rBumper.whileHeld(new moveArmAtSpeed(0.1, m_Arm));
+      lBumper.whileHeld(new moveArmAtSpeed(-0.1, m_Arm));
+      bButton.whenPressed(new yesBrake(m_Chassis));
+      aButton.whenPressed(new noBrake(m_Chassis));
+      yButton.whenPressed(new noBrake(m_Chassis));
     }
+    
+  }
+
+  public static Command getFirstBrake() {
+    return new yesBrake(m_Chassis);
   }
 
   // Gets the auton commands
   public Command getAutonCommand() {
     return autonCommands;
+  }
+
+  public Chassis getChassis() {
+    return m_Chassis;
   }
 
   public static XboxController getController() {

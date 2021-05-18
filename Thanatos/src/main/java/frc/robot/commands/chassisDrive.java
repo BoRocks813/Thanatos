@@ -29,8 +29,22 @@ public class chassisDrive extends CommandBase {
   @Override
   public void execute() {
     // Sets the speeds of movement and rotation to inputs from the controller
-    double moveSpeed = -Constants.linearDriveSense * RobotContainer.getController().getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
-    double rotateSpeed = Constants.lateralDriveSense * RobotContainer.getController().getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
+    double moveSpeed;
+    double rotateSpeed;
+
+    if (Constants.driver == 2) {
+      moveSpeed = Constants.linearDriveSense * (
+      RobotContainer.getController().getRawAxis(Constants.RIGHT_TRIGGER_AXIS) - 
+      RobotContainer.getController().getRawAxis(Constants.LEFT_TRIGGER_AXIS));
+      rotateSpeed = Constants.lateralDriveSense * RobotContainer.getController().getRawAxis(Constants.LEFT_STICK_LR_AXIS);
+    } else if (Constants.driver == 1) {
+      moveSpeed = -Constants.linearDriveSense * RobotContainer.getController().getRawAxis(Constants.DRIVER_CONTROLLER_MOVE_AXIS);
+      rotateSpeed = Constants.lateralDriveSense * RobotContainer.getController().getRawAxis(Constants.DRIVER_CONTROLLER_ROTATE_AXIS);
+    }
+
+    
+    
+      
 
     // Updates the values on the dashboard
     Dashboard.diffDriveRotate.setDouble(rotateSpeed);
@@ -41,5 +55,4 @@ public class chassisDrive extends CommandBase {
   }
 
 }
-
 

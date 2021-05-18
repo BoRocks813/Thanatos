@@ -8,6 +8,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.yesBrake;
 
 // This class automatically runs
 public class Robot extends TimedRobot {
@@ -17,6 +18,8 @@ public class Robot extends TimedRobot {
   // Initializes the Robot Container
   private RobotContainer m_robotContainer;
 
+  private Command firstBrake;
+
   // Uncomment when the limelight is ready
   // private HttpCamera limeLightFeed;
 
@@ -24,8 +27,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Stores the Robot Container
-    m_robotContainer = new RobotContainer();
+    m_robotContainer = new RobotContainer();    
 
+    firstBrake = new yesBrake(m_robotContainer.getChassis());
+
+    firstBrake.schedule();
     // Uncomment when the limelight is in place
     /*
      * limeLightFeed = new HttpCamera("limelight",

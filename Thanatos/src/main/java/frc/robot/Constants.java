@@ -28,17 +28,19 @@ import edu.wpi.first.wpilibj.util.Units;
     // 3 = right trigger
     // 4 = right right/left
     // 5 = right front/back 
-	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 0;
+	public static final int DRIVER_CONTROLLER_ROTATE_AXIS = 4;
     public static final int DRIVER_CONTROLLER_MOVE_AXIS = 1;
 
+    public static final int LEFT_STICK_LR_AXIS = 0;
+    public static final int RIGHT_TRIGGER_UD_AXIS = 5;
     public static final int LEFT_TRIGGER_AXIS = 2;
     public static final int RIGHT_TRIGGER_AXIS = 3;
 
     public static boolean autonOn = false; 
 
-    public final static double linearDriveSense = 0.8;
-    public final static double lateralDriveSense = 0.7;
-    public final static double moveArmSense = 0.1;
+    public final static double linearDriveSense = 0.75;
+    public final static double lateralDriveSense = 0.5;
+    public final static double moveArmSense = 0.05;
 
     // Note: The following requires testing
     public final static double armLower = -20;
@@ -54,4 +56,15 @@ import edu.wpi.first.wpilibj.util.Units;
     public final static double carpetLabkS = 0.696;
     public final static double carpetLabkV = 0.854;
     public final static double carpetLabkA = 0.061;
+
+    public final static boolean isSporlDriving = true;
+
+    // 1 = Will
+    // 2 = Sporl
+    // 3 = Brendan
+    // 4 = Fang
+    // 5 = AO
+    public final static int driver = 1;
+
+    public final static double armCounteracting = 0.05;
 }

@@ -34,10 +34,15 @@ public class moveArm extends CommandBase {
   public void execute() {
     currentPosition = cArm.getPosition();
 
-    fwdSpeed = Constants.moveArmSense * RobotContainer.getController().getRawAxis(Constants.RIGHT_TRIGGER_AXIS);
-    bckSpeed = Constants.moveArmSense * RobotContainer.getController().getRawAxis(Constants.LEFT_TRIGGER_AXIS);
+    if (Constants.driver == 2) {
+      speed = -Constants.moveArmSense * RobotContainer.getController().getRawAxis(Constants.RIGHT_TRIGGER_UD_AXIS);
+      // speed = -(Constants.moveArmSense * RobotContainer.getController().getRawAxis(Constants.RIGHT_TRIGGER_UD_AXIS) + Constants.armCounteracting);
+    } else if (Constants.driver == 1) {
+      fwdSpeed = Constants.moveArmSense * RobotContainer.getController().getRawAxis(Constants.RIGHT_TRIGGER_AXIS);
+      bckSpeed = Constants.moveArmSense * RobotContainer.getController().getRawAxis(Constants.LEFT_TRIGGER_AXIS);
 
-    speed = fwdSpeed - bckSpeed;
+      speed = fwdSpeed - bckSpeed;
+    }
 
     cArm.moveArm(speed);
 

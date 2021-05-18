@@ -19,6 +19,8 @@ public class Arm extends SubsystemBase {
 
   double motorPosition;
 
+  public static double speed;
+
   /** Creates a new Arm. */
   public Arm() {
     // Sets the motor for the arm
@@ -52,7 +54,12 @@ public class Arm extends SubsystemBase {
 
   // Moves the arm
   public void moveArm(double speed) {
-    motor.set(speed);
+    Arm.speed = speed;
+    motor.set(Arm.speed);
+  }
+
+  public static void changeSpeed(double amtChange) {
+    Arm.speed += amtChange;
   }
 
   public WPI_TalonFX getMotor() {
