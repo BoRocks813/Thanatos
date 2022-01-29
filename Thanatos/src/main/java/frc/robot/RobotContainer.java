@@ -13,19 +13,40 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.auton.*;
 
-// This is where the bulk of the robot is declared
+/*
+
+File 1
+
+The RobotContainer class is where the bulk of the robot's functions and subsystems are managed in the
+command-based model.
+
+ */
+
+// The import statements above tell WPILib (the library we use) as well as the proprietary motor libraries
+// which files we will be using. We do this to reduce the amount of material we want to import to only the
+// things we need to use.
+
 public class RobotContainer {
 
-  // Instantiates the Chassis
+  // The first thing we do is create instances of our subsystems. This creates objects with the properties
+  // defined in the subsystem classes. We can then give these objects properties and use commands on them.
+
+  // Creates a "Chassis" object. The chassis controls the wheels and drives the robot. We feed all of the
+  // drive inputes to this object.
   public final static Chassis m_Chassis = new Chassis();
 
-  // Instantiates the Controller
+  // Creates an "XboxController" object. This object allows us to get all of the inputs from the controller
+  // which we then feed to the robot. When defining an XboxController object, we need to give it a port number
+  // The port number can be found in the driver station when the controller is connected and usually defaults
+  // to 0. We keep this value in the Constants class. This class allows us to keep all of our variable values
+  // in one place so we can easily access and change them if necessary.
   private final static XboxController driverController = new XboxController(Constants.DRIVER_CONTROLLER);
 
-  // Instantiates the Arm
+  // Creates an "Arm" object. The robot this code was originally for had an intake attached to an arm that would
+  // rotate up and down.
   private final Arm m_Arm = new Arm();
 
-  // Instantiates the autonomous commands
+  // Creates a grouping of autonCommands. The use of SequentialCommandGroup will be explained later.
   private final SequentialCommandGroup autonCommands = new autonCommands(m_Chassis, m_Arm);
 
   // Creates the RobotContainer
@@ -76,7 +97,7 @@ public class RobotContainer {
   }
 
   // Gets the auton commands
-  public Command getAutonCommand() {
+  public Command getAutonCommands() {
     return autonCommands;
   }
 

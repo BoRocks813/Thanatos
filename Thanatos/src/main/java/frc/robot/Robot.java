@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     // Stores the auton commands
-    m_autonomousCommand = m_robotContainer.getAutonCommand();
+    m_autonomousCommand = m_robotContainer.getAutonCommands();
 
     // If there are auton commands, this will schedule them
     // If not it will print a helpful message
