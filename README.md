@@ -16,7 +16,7 @@ Table of Contents:
 2. Chassis.java - the drive system of the robot
 
 
-Hope you enjoy and if you have any questions feel free to contact me on GitHub or in person!
+Hope you enjoy and if you have any questions feel free to contact me!
 
 Additional info:
 2020-2021 season recap video: https://www.youtube.com/watch?v=rSXBmKQwLcs&t=110s
